@@ -1,0 +1,21 @@
+#默认端口
+server:
+  port: 8080
+
+#设置数据源信息
+#设置数据源信息
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/mysql
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+  mvc:
+    view:
+      prefix: /WEB-INF/view
+
+
+#注册映射文件
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.jxd.comment.model #设置实体类的别名

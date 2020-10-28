@@ -1,5 +1,8 @@
 package com.jxd.comment.model;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 /**
  * @ClassName UserLogin
  * @Description TODO
@@ -7,9 +10,15 @@ package com.jxd.comment.model;
  * @Date 2020/10/28 0028
  * @Version 1.0
  */
+@TableName("userlogin")
 public class UserLogin {
-    private int userId;         //用户id
+
+    @TableField(value = "userid")
+    private int userId;         //
+
+    @TableField(value = "username")
     private String userName;    //用户名称
+
     private String password;    //用户密码
     private int role;           //用户权限1-学生，2-老师，3-员工，4-经理，0-admin
 

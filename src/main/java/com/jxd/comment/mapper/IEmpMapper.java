@@ -11,7 +11,7 @@ public interface IEmpMapper extends BaseMapper<EmpJxd> {
      * @param empno
      * @return
      */
-    EmpJxd selectById(int empno);
+    EmpJxd selectById_A(int empno);
 
 
 }

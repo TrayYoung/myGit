@@ -50,7 +50,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--Beetl依赖-->
+       <!-- &lt;!&ndash;Beetl依赖&ndash;&gt;
         <dependency>
             <groupId>com.ibeetl</groupId>
             <artifactId>beetl-framework-starter</artifactId>
@@ -60,7 +60,7 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.4</version>
-        </dependency>
+        </dependency>-->
 
 
 

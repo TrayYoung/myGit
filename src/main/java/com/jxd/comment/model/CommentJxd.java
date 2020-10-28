@@ -7,11 +7,11 @@ package com.jxd.comment.model;
  * @Date 2020/10/28 0028
  * @Version 1.0
  */
-public class CommandJxd {
+public class CommentJxd {
     private int commentId;      //评价编号
     private String commentName; //评价名称
 
-    public CommandJxd() {
+    public CommentJxd() {
     }
 
     public int getCommentId() {

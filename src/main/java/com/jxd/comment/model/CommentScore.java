@@ -7,7 +7,7 @@ package com.jxd.comment.model;
  * @Date 2020/10/28 0028
  * @Version 1.0
  */
-public class CommandScore {
+public class CommentScore {
     private int selectCmJxd;    //评价分数主键
     private int CommentId;      //评价id，外键
     private int empnoMgr;       //经理编号
@@ -15,7 +15,7 @@ public class CommandScore {
     private double CScore;      //评价分数
     private int year;           //评价年份
 
-    public CommandScore() {
+    public CommentScore() {
     }
 
     public int getSelectCmJxd() {

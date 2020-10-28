@@ -1,7 +1,9 @@
 package com.jxd.comment.service.impl;
 
+import com.jxd.comment.mapper.IEmpMapper;
 import com.jxd.comment.model.EmpJxd;
 import com.jxd.comment.service.IEmpService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,8 +16,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmpServiceImpl implements IEmpService {
+    @Autowired
+    private IEmpMapper empMapper;
     @Override
     public EmpJxd selectOwn(int empno) {
-        return null;
+        return empMapper.selectById(empno);
     }
 }

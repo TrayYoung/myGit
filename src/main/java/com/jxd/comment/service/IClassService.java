@@ -1,4 +1,7 @@
 package com.jxd.comment.service;
 
-public interface IClassService {
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.jxd.comment.model.ClassJxd;
+
+public interface IClassService extends IService<ClassJxd> {
 }

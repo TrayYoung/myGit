@@ -1,4 +1,7 @@
 package com.jxd.comment.service;
 
-public interface ISelectSumCmtService {
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.jxd.comment.model.SelectSumCmt;
+
+public interface ISelectSumCmtService extends IService<SelectSumCmt> {
 }

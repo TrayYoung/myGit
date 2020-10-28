@@ -19,3 +19,11 @@ spring:
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.jxd.comment.model #设置实体类的别名
+
+
+beetl:
+  #当确定前台文件的目录位置后，后缀设置可以省略
+  #suffix: html #将beetl模板文件的后缀定义为html
+  #改变beetl的分隔符,以@开头，以回车结束
+  DELIMITER_STATEMENT_START: \@
+  DELIMITER_STATEMENT_END: null

@@ -1,5 +1,7 @@
 package com.jxd.comment.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jxd.comment.mapper.IEmpMapper;
 import com.jxd.comment.model.EmpJxd;
 import com.jxd.comment.service.IEmpService;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class EmpServiceImpl implements IEmpService {
+public class EmpServiceImpl extends ServiceImpl<IEmpMapper,EmpJxd> implements IEmpService {
     @Override
     public EmpJxd selectOwn(int empno) {
         return null;

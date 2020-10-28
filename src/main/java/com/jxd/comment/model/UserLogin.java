@@ -11,7 +11,7 @@ public class UserLogin {
     private int userId;         //用户id
     private String userName;    //用户名称
     private String password;    //用户密码
-    private int role;           //用户权限1-学生，2-老师，0-admin
+    private int role;           //用户权限1-学生，2-老师，3-员工，4-经理，0-admin
 
     public UserLogin() {
     }

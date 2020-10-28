@@ -1,8 +1,9 @@
 package com.jxd.comment.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jxd.comment.model.EmpJxd;
 
-public interface IEmpMapper {
+public interface IEmpMapper extends BaseMapper<EmpJxd> {
     //经理方法
 
     /**

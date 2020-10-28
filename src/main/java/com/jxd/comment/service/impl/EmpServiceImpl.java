@@ -1,5 +1,6 @@
 package com.jxd.comment.service.impl;
 
+import com.jxd.comment.model.EmpJxd;
 import com.jxd.comment.service.IEmpService;
 import org.springframework.stereotype.Service;
 
@@ -13,4 +14,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmpServiceImpl implements IEmpService {
+    @Override
+    public EmpJxd selectOwn(int empno) {
+        return null;
+    }
 }

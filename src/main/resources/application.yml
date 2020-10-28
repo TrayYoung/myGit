@@ -16,6 +16,6 @@ spring:
 
 
 #注册映射文件
-mybatis:
+mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.jxd.comment.model #设置实体类的别名

@@ -25,7 +25,6 @@ public class EmpJxd {
     private String role;    //权限
     private int deptno;     //部门编号
     private int classNo;    //班级号
-    private String password;//密码
 
     public EmpJxd() {
     }
@@ -158,11 +157,4 @@ public class EmpJxd {
         this.classNo = classNo;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

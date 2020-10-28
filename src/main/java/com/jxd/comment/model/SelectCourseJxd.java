@@ -14,4 +14,46 @@ public class SelectCourseJxd {
     private int empnoTch;   //老师编号
     private double score;   //分数
 
+    public SelectCourseJxd() {
+    }
+
+    public int getSelectId() {
+        return selectId;
+    }
+
+    public void setSelectId(int selectId) {
+        this.selectId = selectId;
+    }
+
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
+    public int getEmpnoStu() {
+        return empnoStu;
+    }
+
+    public void setEmpnoStu(int empnoStu) {
+        this.empnoStu = empnoStu;
+    }
+
+    public int getEmpnoTch() {
+        return empnoTch;
+    }
+
+    public void setEmpnoTch(int empnoTch) {
+        this.empnoTch = empnoTch;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
 }

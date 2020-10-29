@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName EmpServiceImpl
@@ -23,7 +24,7 @@ public class EmpServiceImpl extends ServiceImpl<IEmpMapper, EmpJxd> implements I
     private IEmpMapper empMapper;
 
     @Override
-    public List<EmpJxd> selectOwn(int empno) {
+    public List<Map<String,Object>> selectOwn(int empno) {
         return empMapper.selectById(empno);
     }
 }

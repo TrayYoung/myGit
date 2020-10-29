@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jxd.comment.model.EmpJxd;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IEmpMapper extends BaseMapper<EmpJxd> {
     //经理方法
@@ -13,7 +14,7 @@ public interface IEmpMapper extends BaseMapper<EmpJxd> {
      * @param empno
      * @return
      */
-    List<EmpJxd> selectById(int empno);
+    List<Map<String,Object>> selectById(int empno);
 
 
 }

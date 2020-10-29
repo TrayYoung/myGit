@@ -24,48 +24,20 @@ public class UserController {
     @Autowired
     private IUserLoginService userLoginService;
 
+    /**
+     * 接收账号和密码，并返回对象，没有则返回空字符串
+     * @param uid 用户前台输入的账号
+     * @param pwd 前台输入的密码
+     * @return
+     */
     @RequestMapping("/login/{uid}/{password}")
     @ResponseBody
-    public String login(@PathVariable("uid")String uid,@PathVariable("password")String pwd){
-
+    public UserLogin login(@PathVariable("uid")String uid,
+                           @PathVariable("password")String pwd){
+        //mybatis-plus自带的封装对象操作类
         QueryWrapper<UserLogin> wrapper = new QueryWrapper<>();
         wrapper.eq("userid",uid).eq("password",pwd);
         UserLogin userLogin = userLoginService.getOne(wrapper);
-        //UserLogin userLogin=new UserLogin();
-        //userLogin=userLoginService.getById(uid);
-        //System.out.println(userLogin.getPassword());
-        if (userLogin != null){
-            if (userLogin.getRole() == 0){
-                return "admin";
-            }else if (userLogin.getRole() == 1){
-                return "student";
-            }else if (userLogin.getRole() == 2){
-                return "teacher";
-            }else if (userLogin.getRole() == 3){
-                return "clerk";
-            }else {
-                return "manager";
-            }
-        }else {
-            return "error";
-        }
-        /*QueryWrapper<UserLogin> wrapper = new QueryWrapper<>();
-        wrapper.eq("uid",uid).eq("password",pwd);
-        UserLogin userLogin = userLoginService.getOne(wrapper);
-        if (userLogin != null){
-            if (userLogin.getRole() == 0){
-                return "admin";
-            }else if (userLogin.getRole() == 1){
-                return "student";
-            }else if (userLogin.getRole() == 2){
-                return "teacher";
-            }else if (userLogin.getRole() == 3){
-                return "manager";
-            }else {
-                return "clerk";
-            }
-        }else {
-            return "error";
-        }*/
+        return userLogin;
     }
 }

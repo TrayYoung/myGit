@@ -29,7 +29,6 @@ public class EmpController {
     @ResponseBody
     public List<Map<String,Object>> showInfo(@PathVariable("empno") int empno) {
         List<Map<String,Object>> list = empService.selectOwn(empno);
-        System.out.println("数据条数是" + list.size());
         return list;
     }
 

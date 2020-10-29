@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jxd.comment.mapper.IEmpMapper;
 import com.jxd.comment.model.EmpJxd;
 import com.jxd.comment.service.IEmpService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,9 +18,12 @@ import java.util.List;
  */
 
 @Service
-public class EmpServiceImpl extends ServiceImpl<IEmpMapper,EmpJxd> implements IEmpService {
+public class EmpServiceImpl extends ServiceImpl<IEmpMapper, EmpJxd> implements IEmpService {
+    @Autowired
+    private IEmpMapper empMapper;
+
     @Override
     public List<EmpJxd> selectOwn(int empno) {
-        return null;
+        return empMapper.selectById(empno);
     }
 }

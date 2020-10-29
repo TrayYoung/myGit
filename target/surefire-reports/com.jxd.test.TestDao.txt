@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: com.jxd.test.TestDao
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.239 s <<< FAILURE! - in com.jxd.test.TestDao
+initializationError(com.jxd.test.TestDao)  Time elapsed: 0.008 s  <<< ERROR!
+java.lang.Exception: No runnable methods
+

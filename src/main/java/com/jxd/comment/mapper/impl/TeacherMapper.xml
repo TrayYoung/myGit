@@ -4,7 +4,7 @@
 
 <mapper namespace="com.jxd.comment.mapper.IEmpMapper">
 
-
+<!--sbgymyjj-->
     <select id="getClassByTeacher" resultType="java.util.HashMap">
         select cno,cname,e.ename
         from class c left join emp_jxd e on c.empno = e.empno where c.empno = #{empno}

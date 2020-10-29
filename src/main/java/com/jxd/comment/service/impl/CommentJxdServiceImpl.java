@@ -1,5 +1,8 @@
 package com.jxd.comment.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jxd.comment.mapper.ICommentJxdMapper;
+import com.jxd.comment.model.CommentJxd;
 import com.jxd.comment.service.ICommentJxdService;
 import org.springframework.stereotype.Service;
 
@@ -11,5 +14,5 @@ import org.springframework.stereotype.Service;
  * @Version 1.0
  */
 @Service
-public class CommentJxdServiceImpl implements ICommentJxdService {
+public class CommentJxdServiceImpl extends ServiceImpl<ICommentJxdMapper, CommentJxd> implements ICommentJxdService {
 }

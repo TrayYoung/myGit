@@ -7,12 +7,12 @@ package com.jxd.comment.model;
  * @Date 2020/10/28 0028
  * @Version 1.0
  */
-public class Class {
+public class ClassJxd {
     private int cNo;        //班级编号
     private String cname;   //班级名称
     private int empno;      //老师员工号
 
-    public Class() {
+    public ClassJxd() {
     }
 
     public int getcNo() {

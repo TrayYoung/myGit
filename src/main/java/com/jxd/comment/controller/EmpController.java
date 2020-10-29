@@ -27,8 +27,16 @@ public class EmpController {
 
     @RequestMapping("/showInfo/{empno}")
     @ResponseBody
-    public List<Map<String,Object>> showInfo(@PathVariable("empno") String empno) {
-        List<Map<String,Object>> list = empService.selectOwn(Integer.parseInt(empno));
+    public List<Map<String,Object>> showInfo(@PathVariable("empno") int empno) {
+        List<Map<String,Object>> list = empService.selectOwn(empno);
+        System.out.println("数据条数是" + list.size());
+        return list;
+    }
+
+    @RequestMapping("/getEmpByDeptno/{deptno}")
+    @ResponseBody
+    public List<Map<String,Object>> getEmpByDeptno(@PathVariable("deptno") int deptno) {
+        List<Map<String,Object>> list = empService.selectByDeptno(deptno);
         System.out.println("数据条数是" + list.size());
         return list;
     }

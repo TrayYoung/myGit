@@ -6,6 +6,8 @@ import com.jxd.comment.service.IEmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @ClassName EmpServiceImpl
  * @Description TODO
@@ -19,7 +21,7 @@ public class EmpServiceImpl implements IEmpService {
     @Autowired
     private IEmpMapper empMapper;
     @Override
-    public EmpJxd selectOwn(int empno) {
+    public List<EmpJxd> selectOwn(int empno) {
         return empMapper.selectById(empno);
     }
 }

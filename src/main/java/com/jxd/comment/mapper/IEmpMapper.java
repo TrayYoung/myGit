@@ -2,6 +2,8 @@ package com.jxd.comment.mapper;
 
 import com.jxd.comment.model.EmpJxd;
 
+import java.util.List;
+
 public interface IEmpMapper {
     //经理方法
 
@@ -10,7 +12,7 @@ public interface IEmpMapper {
      * @param empno
      * @return
      */
-    EmpJxd selectById(int empno);
+    List<EmpJxd> selectById(int empno);
 
 
 }

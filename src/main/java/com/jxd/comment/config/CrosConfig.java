@@ -11,8 +11,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class CrosConfig implements WebMvcConfigurer {
-    public void addCorsMappings(CorsRegistry registry){//我允许谁访问我
-        //  /**匹配的是我们所有后台路径，代表后台共享了什么资源
+    public void addCorsMappings(CorsRegistry registry){
+        // /**匹配的是所有后台的路径，代表后台共享了什么资源
         registry.addMapping("/**")
                 //匹配的是前台的服务器地址
                 .allowedOrigins("*")

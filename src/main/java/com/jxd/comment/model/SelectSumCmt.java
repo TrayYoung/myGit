@@ -12,8 +12,8 @@ public class SelectSumCmt {
     private int sum_commentId;  //评价id
     private int empnoMORT;      //评价人（老师/经理）
     private int empnoEmp;       //被评价人编号
-    private double contentText; //整体评价分数(二者选一）
-    private String contentScore;//文本评价(二者选一）
+    private String contentText; //文本评价(二者选一）
+    private double contentScore;//整体评价分数(二者选一）
     private String contentType; //school/regular/regular1-3(五种类型）
 
     public SelectSumCmt() {
@@ -51,19 +51,19 @@ public class SelectSumCmt {
         this.empnoEmp = empnoEmp;
     }
 
-    public double getContentText() {
+    public String getContentText() {
         return contentText;
     }
 
-    public void setContentText(double contentText) {
+    public void setContentText(String contentText) {
         this.contentText = contentText;
     }
 
-    public String getContentScore() {
+    public double getContentScore() {
         return contentScore;
     }
 
-    public void setContentScore(String contentScore) {
+    public void setContentScore(double contentScore) {
         this.contentScore = contentScore;
     }
 

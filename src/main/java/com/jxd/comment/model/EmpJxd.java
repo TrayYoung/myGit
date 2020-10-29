@@ -22,7 +22,7 @@ public class EmpJxd {
     private String major;   //专业
     private String remarks; //备注
     private String img;     //头像路径
-    private String role;    //权限
+    private String job;    //权限
     private int deptno;     //部门编号
     private int classNo;    //班级号
 
@@ -133,12 +133,12 @@ public class EmpJxd {
         this.img = img;
     }
 
-    public String getRole() {
-        return role;
+    public String getJob() {
+        return job;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setJob(String job) {
+        this.job = job;
     }
 
     public int getDeptno() {

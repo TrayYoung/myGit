@@ -35,8 +35,12 @@ public class UserController {
     public UserLogin login(@PathVariable("uid")String uid,
                            @PathVariable("password")String pwd){
         //mybatis-plus自带的封装对象操作类
+        if ("admin".equals(uid)){
+            uid = "0";
+        }
+        int uid_int = Integer.parseInt(uid);
         QueryWrapper<UserLogin> wrapper = new QueryWrapper<>();
-        wrapper.eq("userid",uid).eq("password",pwd);
+        wrapper.eq("userid",uid_int).eq("password",pwd);
         UserLogin userLogin = userLoginService.getOne(wrapper);
         return userLogin;
     }

@@ -4,7 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jxd.comment.model.ClassJxd;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IClassJxdMapper extends BaseMapper<ClassJxd>{
-    List<ClassJxd> getClassByTeacher(int empno);
+    List<Map<String,Object>> getClassByTeacher(int empno);
 }

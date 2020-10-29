@@ -12,7 +12,7 @@
 
     <select id="selectEmpByDeptno" resultType="java.util.HashMap">
         select empno,ename,sex,nation,birthday,address,ismarry,tel,idnum,school,major,remarks,img,job,dname
-        from emp_jxd e left join dept_jxd d on e.deptno = d.deptno where deptno = #{deptno}
+        from emp_jxd e left join dept_jxd d on e.deptno = d.deptno where e.deptno = #{deptno}
     </select>
 
 </mapper>

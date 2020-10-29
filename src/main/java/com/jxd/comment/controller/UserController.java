@@ -42,9 +42,9 @@ public class UserController {
             }else if (userLogin.getRole() == 2){
                 return "teacher";
             }else if (userLogin.getRole() == 3){
-                return "manager";
-            }else {
                 return "clerk";
+            }else {
+                return "manager";
             }
         }else {
             return "error";

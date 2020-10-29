@@ -6,6 +6,8 @@ import com.jxd.comment.model.EmpJxd;
 import com.jxd.comment.service.IEmpService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @ClassName EmpServiceImpl
  * @Description TODO
@@ -17,7 +19,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmpServiceImpl extends ServiceImpl<IEmpMapper,EmpJxd> implements IEmpService {
     @Override
-    public EmpJxd selectOwn(int empno) {
+    public List<EmpJxd> selectOwn(int empno) {
         return null;
     }
 }

@@ -20,11 +20,12 @@ import java.util.Map;
 
 @Service
 public class EmpServiceImpl extends ServiceImpl<IEmpMapper, EmpJxd> implements IEmpService {
+
     @Autowired
     private IEmpMapper empMapper;
 
     @Override
     public List<Map<String,Object>> selectOwn(int empno) {
-        return empMapper.selectById(empno);
+        return empMapper.selectById_A(empno);
     }
 }

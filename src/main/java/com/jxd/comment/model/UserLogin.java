@@ -14,7 +14,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 public class UserLogin {
 
     @TableField(value = "userid")
-    private String userId;         //
+    private int userId;         //
 
     @TableField(value = "username")
     private String userName;    //用户名称
@@ -25,11 +25,11 @@ public class UserLogin {
     public UserLogin() {
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

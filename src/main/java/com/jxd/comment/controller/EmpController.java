@@ -63,6 +63,4 @@ public class EmpController {
         System.out.println("数据条数是" + list.size());
         return list;
     }
-
-
 }

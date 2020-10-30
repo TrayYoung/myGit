@@ -30,6 +30,5 @@ public class ClassController {
         List<Map<String,Object>> list = classService.getClass(Integer.parseInt(empno));
 
         return list;
-
     }
 }

@@ -12,7 +12,15 @@
 
     <select id="selectEmpByDeptno" resultType="java.util.HashMap">
         select empno,ename,sex,nation,birthday,address,ismarry,tel,idnum,school,major,remarks,img,job,dname
-        from emp_jxd e left join dept_jxd d on e.deptno = d.deptno where e.deptno = #{deptno}
+        from emp_jxd e left join dept_jxd d on e.deptno = d.deptno where e.deptno = #{deptno} and job = 'CLERK'
+    </select>
+
+    <select id="selectEmpByDeptnoAndEname" resultType="java.util.HashMap">
+        select empno,ename,sex,nation,birthday,address,ismarry,tel,idnum,school,major,remarks,img,job,dname
+        from emp_jxd e left join dept_jxd d on e.deptno = d.deptno where e.deptno = #{deptno} and job = 'CLERK'
+        <if test="ename != '' and ename != null">
+            and ename like concat('%',#{ename},'%')
+        </if>
     </select>
 
 </mapper>

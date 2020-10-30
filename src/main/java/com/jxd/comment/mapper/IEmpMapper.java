@@ -2,6 +2,7 @@ package com.jxd.comment.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jxd.comment.model.EmpJxd;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -16,5 +17,18 @@ public interface IEmpMapper extends BaseMapper<EmpJxd> {
      */
     List<Map<String,Object>> selectById(int empno);
 
+    /**
+     * 查找部门全部员工
+     * @param deptno
+     * @return
+     */
     List<Map<String,Object>> selectEmpByDeptno(int deptno);
+
+    /**
+     * 根据姓名筛选部门员工
+     * @param deptno
+     * @param ename
+     * @return
+     */
+    List<Map<String,Object>> selectEmpByDeptnoAndEname(@Param("deptno") int deptno,@Param("ename") String ename);
 }

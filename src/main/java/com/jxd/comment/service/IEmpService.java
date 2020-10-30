@@ -11,4 +11,6 @@ public interface IEmpService extends IService<EmpJxd> {
     List<Map<String,Object>> selectOwn(int empno);
 
     List<Map<String,Object>> selectByDeptno(int deptno);
+
+    List<Map<String,Object>> selectByDeptnoAndName(int deptno,String ename);
 }

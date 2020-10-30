@@ -25,17 +25,41 @@ public class EmpController {
     @Autowired
     private IEmpService empService;
 
+    /**
+     * 显示经理个人信息
+     * @param empno
+     * @return
+     */
     @RequestMapping("/showInfo/{empno}")
     @ResponseBody
-    public List<Map<String,Object>> showInfo(@PathVariable("empno") int empno) {
-        List<Map<String,Object>> list = empService.selectOwn(empno);
+    public List<Map<String, Object>> showInfo(@PathVariable("empno") int empno) {
+        List<Map<String, Object>> list = empService.selectOwn(empno);
         return list;
     }
 
+    /**
+     * 根据姓名筛选部门员工
+     * @param deptno
+     * @param ename
+     * @return
+     */
+    @RequestMapping("/getEmpByDeptnoAndName/{deptno}/{ename}")
+    @ResponseBody
+    public List<Map<String, Object>> getEmpByDeptnoAndName(@PathVariable("deptno") int deptno, @PathVariable("ename") String ename) {
+        List<Map<String, Object>> list = empService.selectByDeptnoAndName(deptno, ename);
+        System.out.println("数据条数是" + list.size());
+        return list;
+    }
+
+    /**
+     * 查找部门全部员工
+     * @param deptno
+     * @return
+     */
     @RequestMapping("/getEmpByDeptno/{deptno}")
     @ResponseBody
-    public List<Map<String,Object>> getEmpByDeptno(@PathVariable("deptno") int deptno) {
-        List<Map<String,Object>> list = empService.selectByDeptno(deptno);
+    public List<Map<String, Object>> getEmpByDeptno(@PathVariable("deptno") int deptno) {
+        List<Map<String, Object>> list = empService.selectByDeptno(deptno);
         System.out.println("数据条数是" + list.size());
         return list;
     }

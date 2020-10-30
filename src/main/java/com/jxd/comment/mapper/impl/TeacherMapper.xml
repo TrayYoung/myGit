@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jxd.comment.mapper.IClassJxdMapper">
+
+<!--sbgymyjj-->
+    <select id="getClassByTeacher" resultType="java.util.HashMap">
+        select cno,cname,e.ename
+        from class c left join emp_jxd e on c.empno = e.empno where c.empno = #{empno}
+    </select>
+
+</mapper>

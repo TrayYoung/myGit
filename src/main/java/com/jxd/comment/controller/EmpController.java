@@ -63,4 +63,16 @@ public class EmpController {
         System.out.println("数据条数是" + list.size());
         return list;
     }
+
+    /**
+     * 查询一个学生的所有信息
+     * @param empno 学生工号
+     * @return
+     */
+   /* @RequestMapping(value = "/getStudent/{empno}")
+    @ResponseBody
+    public Map<String,Object> getStudent(@PathVariable("empno") int empno){
+        Map<String,Object> message = empService.getStudent(empno);
+        return message;
+    }*/
 }

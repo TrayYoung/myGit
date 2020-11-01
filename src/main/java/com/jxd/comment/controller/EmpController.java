@@ -69,10 +69,10 @@ public class EmpController {
      * @param empno 学生工号
      * @return
      */
-   /* @RequestMapping(value = "/getStudent/{empno}")
+    @RequestMapping(value = "/getMessage/{empno}")
     @ResponseBody
     public Map<String,Object> getStudent(@PathVariable("empno") int empno){
-        Map<String,Object> message = empService.getStudent(empno);
+        Map<String,Object> message = empService.getMessage(empno);
         return message;
-    }*/
+    }
 }

@@ -31,4 +31,11 @@ public interface IEmpMapper extends BaseMapper<EmpJxd> {
      * @return
      */
     List<Map<String,Object>> selectEmpByDeptnoAndEname(@Param("deptno") int deptno,@Param("ename") String ename);
+
+    /**
+     * 根据工号获取员工信息
+     * @param empno
+     * @return
+     */
+    Map<String,Object> getMessage(@Param("empno") int empno);
 }

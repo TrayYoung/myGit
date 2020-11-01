@@ -8,9 +8,11 @@ import java.util.Map;
 
 public interface IEmpService extends IService<EmpJxd> {
     //经理方法
-    List<Map<String,Object>> selectOwn(int empno);
+    List<Map<String, Object>> selectOwn(int empno);
 
-    List<Map<String,Object>> selectByDeptno(int deptno);
+    List<Map<String, Object>> selectByDeptno(int deptno);
 
-    List<Map<String,Object>> selectByDeptnoAndName(int deptno,String ename);
+    List<Map<String, Object>> selectByDeptnoAndName(int deptno, String ename);
+
+    Map<String, Object> getMessage(int empno);
 }

@@ -6,6 +6,10 @@ import com.jxd.comment.model.CommentScore;
 import com.jxd.comment.service.ICommentScoreService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
+
 /**
  * @ClassName CommentScoreServiceImpl
  * @Description TODO
@@ -15,4 +19,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CommentScoreServiceImpl extends ServiceImpl<ICommentScoreMapper, CommentScore> implements ICommentScoreService {
+
+    @Resource
+    private ICommentScoreMapper commentScoreMapper;
+
+    @Override
+    public List<Map<String, Object>> getCommentScoreByEmpnoAndYear(int empno,int year) {
+        return commentScoreMapper.getCommentScoreByEmpnoAndYear(empno,year);
+    }
 }

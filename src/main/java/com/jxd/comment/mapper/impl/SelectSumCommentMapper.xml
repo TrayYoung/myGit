@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jxd.comment.mapper.ISelectSumCmtMapper">
+    <select id="getSumCommentSchool" resultType="java.util.HashMap">
+      SELECT
+        ejd.ename,
+        content_score,
+        content_text,
+        ej.class_num
+        FROM
+            select_sum_cmt ssc
+            LEFT JOIN sum_comment sm ON ssc.Sum_commentId = sm.Sum_commentId
+            LEFT JOIN emp_jxd ej ON ej.empno = ssc.empno_emp
+            LEFT JOIN emp_jxd ejd ON ssc.empno_M_OR_T = ejd.empno
+        WHERE
+            ssc.empno_emp = #{empno}
+            AND sm.content_type = 'school'
+    </select>
+    <select id="getSumCommentCompany" resultType="java.util.HashMap">
+     SELECT
+        ejd.ename,
+        content_score,
+        content_text,
+        dj.dname
+        FROM
+            select_sum_cmt ssc
+            LEFT JOIN sum_comment sm ON ssc.Sum_commentId = sm.Sum_commentId
+            LEFT JOIN emp_jxd ej ON ej.empno = ssc.empno_emp
+            LEFT JOIN dept_jxd dj on dj.deptno=ej.deptno
+            LEFT JOIN emp_jxd ejd ON ssc.empno_M_OR_T = ejd.empno
+        WHERE
+            ssc.empno_emp = #{empno}
+            AND sm.content_type = #{content_type}
+    </select>
+
+</mapper>

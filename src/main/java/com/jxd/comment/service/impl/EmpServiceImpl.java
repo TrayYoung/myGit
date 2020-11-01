@@ -26,7 +26,7 @@ public class EmpServiceImpl extends ServiceImpl<IEmpMapper, EmpJxd> implements I
 
     @Override
     public List<Map<String,Object>> selectOwn(int empno) {
-        return empMapper.selectById(empno);
+        return empMapper.selectByEmpno(empno);
     }
 
     @Override

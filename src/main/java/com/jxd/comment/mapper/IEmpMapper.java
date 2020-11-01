@@ -15,7 +15,7 @@ public interface IEmpMapper extends BaseMapper<EmpJxd> {
      * @param empno
      * @return
      */
-    List<Map<String,Object>> selectById(int empno);
+    List<Map<String,Object>> selectByEmpno(int empno);
 
     /**
      * 查找部门全部员工

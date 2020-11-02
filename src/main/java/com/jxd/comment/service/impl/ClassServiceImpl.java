@@ -26,4 +26,14 @@ public class ClassServiceImpl extends ServiceImpl<IClassJxdMapper, ClassJxd> imp
     public List<Map<String,Object>> getClass(int empno) {
         return classJxdMapper.getClassByTeacher(empno);
     }
+
+    @Override
+    public List<Map<String, Object>> getStudentByClass(int cls) {
+        return classJxdMapper.getStudentByClass(cls);
+    }
+
+    @Override
+    public List<Map<String, Object>> getCourseByTeacher(int empno) {
+        return classJxdMapper.getCourseByTeacher(empno);
+    }
 }

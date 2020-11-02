@@ -9,5 +9,13 @@
         select cno,cname,e.ename
         from class c left join emp_jxd e on c.empno = e.empno where c.empno = #{empno}
     </select>
+    <select id="getStudentByClass" resultType="java.util.HashMap">
+        select empno,ename,role,d.dname
+        from emp_jxd e left join dept_jxd d on e.deptno = d.deptno
+        where class = #{cls} and e.deptno = 2
+    </select>
+    <select id="getCourseByTeacher" resultType="java.util.HashMap">
+        select courseid,coursename from course_jxd where empno = #{empno}
+    </select>
 
 </mapper>

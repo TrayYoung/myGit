@@ -69,12 +69,12 @@ public class EmpController {
      * @param empno 学生工号
      * @return
      */
-    @RequestMapping(value = "/getMessage/{empno}")
-    @ResponseBody
-    public Map<String,Object> getStudent(@PathVariable("empno") int empno){
-        Map<String,Object> message = empService.getMessage(empno);
-        return message;
-    }
+//    @RequestMapping(value = "/getMessage/{empno}")
+//    @ResponseBody
+//    public Map<String,Object> getStudent(@PathVariable("empno") int empno){
+//        Map<String,Object> message = empService.getMessage(empno);
+//        return message;
+//    }
 
     /**
      * 根据班期查询班级成员

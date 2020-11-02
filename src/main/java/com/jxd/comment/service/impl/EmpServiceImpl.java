@@ -39,10 +39,10 @@ public class EmpServiceImpl extends ServiceImpl<IEmpMapper, EmpJxd> implements I
         return empMapper.selectEmpByDeptnoAndEname(deptno,ename);
     }
 
-    @Override
-    public Map<String, Object> getMessage(int empno) {
-        return empMapper.getMessage(empno);
-    }
+//    @Override
+//    public Map<String, Object> getMessage(int empno) {
+//        return empMapper.getMessage(empno);
+//    }
 
     @Override
     public List<Map<String, Object>> getStudentByCno(int class_num) {

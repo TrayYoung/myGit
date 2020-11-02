@@ -24,10 +24,10 @@ import java.util.Map;
 @SpringBootTest(classes = cmtApplication.class)
 public class TestDao {
 
-    @Autowired
+   /* @Autowired
     private IClassJxdMapper classJxdMapper;
-    @Test
-    public void testTeacher(){
+     @Test
+   public void testTeacher(){
         List<Map<String,Object>> list = classJxdMapper.getCourseByTeacher(1000);
         for (Map<String,Object> map:list
              ) {
@@ -36,6 +36,6 @@ public class TestDao {
                 System.out.println(map.get(s));
             }
         }
-    }
+    }*/
 
 }

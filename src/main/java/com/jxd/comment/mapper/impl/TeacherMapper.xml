@@ -15,7 +15,7 @@
         where class = #{cls} and e.deptno = 2
     </select>
     <select id="getCourseByTeacher" resultType="java.util.HashMap">
-        select courseid,coursename from course_jxd where empno = #{empno}
+        select courseid,coursename from course_jxd
     </select>
 
 </mapper>

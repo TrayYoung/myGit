@@ -6,6 +6,9 @@ import com.jxd.comment.model.SelectSumCmt;
 import com.jxd.comment.service.ISelectSumCmtService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.Map;
+
 /**
  * @ClassName SelectSumCmtServiceImpl
  * @Description TODO
@@ -15,4 +18,19 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SelectSumCmtServiceImpl extends ServiceImpl<ISelectSumCmtMapper, SelectSumCmt> implements ISelectSumCmtService {
+
+    @Resource
+    private ISelectSumCmtMapper selectSumCmtMapper;
+
+    @Override
+    public Map<String, Object> getSumCommentSchool(int empno) {
+        return selectSumCmtMapper.getSumCommentSchool(empno);
+    }
+
+    @Override
+    public Map<String, Object> getSumCommentCompany(int empno,String content_type) {
+        return selectSumCmtMapper.getSumCommentCompany(empno,content_type);
+    }
+
+
 }

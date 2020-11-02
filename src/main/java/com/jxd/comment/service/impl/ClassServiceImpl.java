@@ -7,6 +7,7 @@ import com.jxd.comment.service.IClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ import java.util.Map;
  */
 @Service
 public class ClassServiceImpl extends ServiceImpl<IClassJxdMapper, ClassJxd> implements IClassService {
-    @Autowired
+    @Resource
     private IClassJxdMapper classJxdMapper;
     @Override
     public List<Map<String,Object>> getClass(int empno) {

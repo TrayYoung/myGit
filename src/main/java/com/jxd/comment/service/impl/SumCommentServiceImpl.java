@@ -6,6 +6,8 @@ import com.jxd.comment.model.SumComment;
 import com.jxd.comment.service.ISumCommentService;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 /**
  * @ClassName SumCommentServiceImpl
  * @Description TODO
@@ -15,4 +17,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SumCommentServiceImpl extends ServiceImpl<ISumCommentMapper, SumComment> implements ISumCommentService {
+
+
+
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jxd.comment.mapper.ICourseJxdMapper">
+    <select id="getCourseScoreByEmpno" resultType="java.util.HashMap">
+        select scj.courseId,courseName,score from select_course_jxd scj
+        LEFT JOIN course_jxd cj on scj.courseId=cj.courseId
+        WHERE scj.empno_stu=#{empno}
+    </select>
+</mapper>

@@ -2,6 +2,7 @@ package com.jxd.comment.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jxd.comment.model.EmpJxd;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -15,4 +16,7 @@ public interface IEmpService extends IService<EmpJxd> {
     List<Map<String, Object>> selectByDeptnoAndName(int deptno, String ename);
 
     Map<String, Object> getMessage(int empno);
+
+    //学生方法
+    List<Map<String,Object>> getClassMemberByCNo(int cNo);
 }

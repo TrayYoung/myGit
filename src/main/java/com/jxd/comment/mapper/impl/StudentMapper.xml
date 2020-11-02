@@ -10,4 +10,8 @@
         e.deptno = d.deptno left join class c on
         e.class_num = c.cno where e.empno = #{empno}
     </select>
+    <select id="getClassMemberByCNo" resultType="java.util.HashMap">
+       select e.empno,e.ename,c.cname from emp_jxd e left join class c on e.class_num=c.cNo
+       where e.class_num=#{cNo}
+    </select>
 </mapper>

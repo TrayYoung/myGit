@@ -20,10 +20,19 @@ import java.util.Map;
  */
 @Service
 public class ClassServiceImpl extends ServiceImpl<IClassJxdMapper, ClassJxd> implements IClassService {
+
+
     @Resource
     private IClassJxdMapper classJxdMapper;
+
+
     @Override
     public List<Map<String,Object>> getClass(int empno) {
         return classJxdMapper.getClassByTeacher(empno);
+    }
+
+    @Override
+    public List<Map<String, Object>> getClassListByName(int pageStart,int pageSize,String cname) {
+        return classJxdMapper.getClassListByName(pageStart,pageSize,cname);
     }
 }

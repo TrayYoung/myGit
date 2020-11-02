@@ -38,4 +38,8 @@ public interface IEmpMapper extends BaseMapper<EmpJxd> {
      * @return
      */
     Map<String,Object> getMessage(@Param("empno") int empno);
+
+
+    //根据班级号查询这个班的学生
+    List<Map<String,Object>> getClassMemberByCNo(@Param("cNo")int cNo);
 }

@@ -43,4 +43,14 @@ public class EmpServiceImpl extends ServiceImpl<IEmpMapper, EmpJxd> implements I
     public Map<String, Object> getMessage(int empno) {
         return empMapper.getMessage(empno);
     }
+
+
+
+    //以下是学生方法!
+    //学生方法!
+    //学生方法!
+    @Override
+    public List<Map<String, Object>> getClassMemberByCNo(int cNo) {
+        return empMapper.getClassMemberByCNo(cNo);
+    }
 }

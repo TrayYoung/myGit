@@ -1,6 +1,7 @@
 package com.jxd.comment.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
@@ -13,7 +14,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 @TableName("userlogin")
 public class UserLogin {
 
-    @TableField(value = "userid")
+    @TableId(value = "userid")
     private int userId;         //
 
     @TableField(value = "username")

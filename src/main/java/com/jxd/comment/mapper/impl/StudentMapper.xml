@@ -15,4 +15,14 @@
        select e.empno,e.ename,c.cname from emp_jxd e left join class c on e.class_num=c.cNo
        where e.class_num=#{cNo}
     </select>
+
+    <select id="getTeacher" resultType="com.jxd.comment.model.EmpJxd">
+        select e.* from emp_jxd e left join class c on
+        c.empno = e.empno where class_num = #{class_num}
+    </select>
+
+    <select id="getClassMemberByCNo" resultType="java.util.HashMap">
+       select e.empno,e.ename,c.cname from emp_jxd e left join class c on e.class_num=c.cNo
+       where e.class_num=#{cNo}
+    </select>
 </mapper>

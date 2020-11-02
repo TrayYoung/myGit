@@ -28,7 +28,19 @@ public class ClassController {
     @ResponseBody
     public List<Map<String,Object>> showClass(@PathVariable("empno") String empno){
         List<Map<String,Object>> list = classService.getClass(Integer.parseInt(empno));
-
         return list;
     }
+    @RequestMapping("/showStudent/{cls}")
+    @ResponseBody
+    public List<Map<String,Object>> showStudent(@PathVariable("cls") String cls){
+        List<Map<String,Object>> list = classService.getStudentByClass(Integer.parseInt(cls));
+        return list;
+    }
+    @RequestMapping("showCourse/{empno}")
+    @ResponseBody
+    public List<Map<String,Object>> showCourse(@PathVariable("empno") String empno){
+        List<Map<String,Object>> list = classService.getCourseByTeacher(Integer.parseInt(empno));
+        return list;
+    }
+
 }

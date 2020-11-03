@@ -1,5 +1,7 @@
 package com.jxd.comment.model;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+
 /**
  * @ClassName emp
  * @Description TODO
@@ -24,7 +26,7 @@ public class EmpJxd {
     private String img;     //头像路径
     private String job;    //权限
     private int deptno;     //部门编号
-    private int classNo;    //班级号
+    private int classNum;    //班级号
 
     public EmpJxd() {
     }
@@ -149,12 +151,11 @@ public class EmpJxd {
         this.deptno = deptno;
     }
 
-    public int getClassNo() {
-        return classNo;
+    public int getClassNum() {
+        return classNum;
     }
 
-    public void setClassNo(int classNo) {
-        this.classNo = classNo;
+    public void setClassNum(int classNum) {
+        this.classNum = classNum;
     }
-
 }

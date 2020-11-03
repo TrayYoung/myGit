@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -60,7 +61,7 @@ public class EmpController {
     @ResponseBody
     public List<Map<String, Object>> getEmpByDeptno(@PathVariable("deptno") int deptno) {
         List<Map<String, Object>> list = empService.selectByDeptno(deptno);
-        System.out.println("数据条数是" + list.size());
+//        System.out.println("数据条数是" + list.size());
         return list;
     }
 
@@ -69,12 +70,12 @@ public class EmpController {
      * @param empno 学生工号
      * @return
      */
-//    @RequestMapping(value = "/getMessage/{empno}")
-//    @ResponseBody
-//    public Map<String,Object> getStudent(@PathVariable("empno") int empno){
-//        Map<String,Object> message = empService.getMessage(empno);
-//        return message;
-//    }
+    @RequestMapping(value = "/getMessage/{empno}")
+    @ResponseBody
+    public Map<String,Object> getStudent(@PathVariable("empno") int empno){
+        Map<String,Object> message = empService.getMessage(empno);
+        return message;
+    }
 
     /**
      * 根据班期查询班级成员

@@ -37,7 +37,7 @@ public interface IEmpMapper extends BaseMapper<EmpJxd> {
      * @param empno
      * @return
      */
-//    Map<String,Object> getMessage(@Param("empno") int empno);
+    Map<String,Object> getMessage(@Param("empno") int empno);
 
     /**
      * 根据班期选择成员

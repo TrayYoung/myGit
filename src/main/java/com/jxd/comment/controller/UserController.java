@@ -44,4 +44,35 @@ public class UserController {
         UserLogin userLogin = userLoginService.getOne(wrapper);
         return userLogin;
     }
+
+    /**
+     * 修改密码，返回修改成功与否
+     * @param n_pwd 新的密码
+     * @return
+     */
+    @RequestMapping(value = "resetPassword/{o_pwd}/{n_pwd}/{uid}")
+    @ResponseBody
+    public String resetPwd(@PathVariable("o_pwd") String o_pwd,
+                           @PathVariable("n_pwd") String n_pwd,
+                           @PathVariable("uid") String uid){
+        if ("admin".equals(uid)){
+            uid = "0";
+        }
+        int uid_int = Integer.parseInt(uid);
+        QueryWrapper<UserLogin> wrapper = new QueryWrapper<>();
+        wrapper.eq("userid",uid_int).eq("password",o_pwd);
+        UserLogin userLogin = userLoginService.getOne(wrapper);
+        if (userLogin != null){
+            userLogin.setUserId(uid_int);
+            userLogin.setPassword(n_pwd);
+            boolean flag = userLoginService.updateById(userLogin);
+            if (flag){
+                return "success";
+            }else {
+                return "error";
+            }
+        }else {
+            return "different";
+        }
+    }
 }

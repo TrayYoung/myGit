@@ -1,5 +1,6 @@
 package com.jxd.comment.controller;
 
+import com.jxd.comment.model.ClassJxd;
 import com.jxd.comment.service.IClassService;
 import com.jxd.comment.service.impl.ClassServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,19 +29,26 @@ public class ClassController {
     @ResponseBody
     public List<Map<String,Object>> showClass(@PathVariable("empno") String empno){
         List<Map<String,Object>> list = classService.getClass(Integer.parseInt(empno));
-        return list;
-    }
-    @RequestMapping("/showStudent/{cls}")
-    @ResponseBody
-    public List<Map<String,Object>> showStudent(@PathVariable("cls") String cls){
-        List<Map<String,Object>> list = classService.getStudentByClass(Integer.parseInt(cls));
-        return list;
-    }
-    @RequestMapping("showCourse/{empno}")
-    @ResponseBody
-    public List<Map<String,Object>> showCourse(@PathVariable("empno") String empno){
-        List<Map<String,Object>> list = classService.getCourseByTeacher(Integer.parseInt(empno));
+
         return list;
     }
 
+    @RequestMapping("/getClassListForSelect")
+    @ResponseBody
+    public List<ClassJxd> getClassList(){
+        return classService.list();
+    }
+
+
+    @RequestMapping("/getClassListByName/{currentPage}/{pagesize}/{cname}")
+    @ResponseBody
+    public List<Map<String,Object>> getClassListByName
+            (@PathVariable("currentPage")int currentPage,@PathVariable("pagesize")int pagesize,
+             @PathVariable("cname")String cname){
+        int pageStart=pagesize*(currentPage-1);
+        int pageSize=pagesize;
+        String cname1=cname;
+        List<Map<String,Object>> list=classService.getClassListByName(pageStart,pageSize,cname1);
+        return list;
+    }
 }

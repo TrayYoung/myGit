@@ -86,4 +86,15 @@ public class EmpController {
     public List<Map<String,Object>> getStudentByCno(@PathVariable("class_num") int class_num){
         return empService.getStudentByCno(class_num);
     }
+
+    /**
+     * 根据班级获取该班的教师
+     * @param class_num
+     * @return
+     */
+    @RequestMapping(value = "/getTeacherMessage/{class_num}")
+    @ResponseBody
+    public EmpJxd getTeacher(@PathVariable("class_num") int class_num){
+        return empService.getTeacher(class_num);
+    }
 }

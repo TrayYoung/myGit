@@ -28,7 +28,7 @@ public class TestDao {
     private IClassJxdMapper classJxdMapper;
     @Test
     public void testTeacher(){
-        List<Map<String,Object>> list = classJxdMapper.getCourseByTeacher(1000);
+        List<Map<String,Object>> list = classJxdMapper.getEmpInfo(1000);
         for (Map<String,Object> map:list
              ) {
             for (String s:map.keySet()

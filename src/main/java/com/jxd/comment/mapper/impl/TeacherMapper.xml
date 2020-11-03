@@ -10,12 +10,25 @@
         from class c left join emp_jxd e on c.empno = e.empno where c.empno = #{empno}
     </select>
     <select id="getStudentByClass" resultType="java.util.HashMap">
-        select empno,ename,role,d.dname
-        from emp_jxd e left join dept_jxd d on e.deptno = d.deptno
-        where class = #{cls} and e.deptno = 2
+            select empno,ename from emp_jxd where deptno=2 and class = #{cls}
     </select>
     <select id="getCourseByTeacher" resultType="java.util.HashMap">
         select courseid,coursename from course_jxd
+    </select>
+    <select id="getScore" resultType="java.util.HashMap">
+        SELECT ename,courseName,score
+FROM (
+	SELECT ename,courseid,score
+	FROM select_course_jxd s
+		LEFT JOIN emp_jxd e ON s.empno_stu = e.empno
+	WHERE
+		empno_tch = #{empno}
+		AND courseId = #{courseid}
+	) a
+	LEFT JOIN course_jxd b ON a.courseId = b.courseId
+    </select>
+    <select id="getEmpInfo" resultType="java.util.HashMap">
+        select empno,ename,sex,birthday,address from emp_jxd where empno = #{empno}
     </select>
 
 </mapper>

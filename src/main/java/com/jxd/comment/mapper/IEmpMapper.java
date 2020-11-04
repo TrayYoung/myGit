@@ -55,4 +55,9 @@ public interface IEmpMapper extends BaseMapper<EmpJxd> {
 
    /* //根据班级号查询这个班的学生
     List<Map<String,Object>> getClassMemberByCNo(@Param("cNo")int cNo);*/
+
+   //查询待添加的学生
+    List<Map<String,Object>> getStudentsToAddListForSelect();
+
+    boolean deleteStudentFromOneClass(@Param("empno") int empno);
 }

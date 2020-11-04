@@ -94,7 +94,6 @@ public class ClassController {
         classJxd.setcNo((int)(map.get("class_num")));
         classJxd.setEmpno((int)map.get("teacherId"));
         classJxd.setCname(map.get("cname").toString());
-
        /* QueryWrapper<ClassJxd> wrapper=new QueryWrapper<>();
         wrapper.eq("cname",map.get("cname").toString())
                 .eq("empno",map.get("teacherId"));*/

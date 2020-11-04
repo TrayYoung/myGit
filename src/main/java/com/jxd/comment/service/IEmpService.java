@@ -14,9 +14,7 @@ public interface IEmpService extends IService<EmpJxd> {
 
     List<Map<String, Object>> selectByDeptnoAndName(int deptno, String ename);
 
-/*
-    //学生方法
-    List<Map<String,Object>> getClassMemberByCNo(int cNo);*/
+/*  List<Map<String,Object>> getClassMemberByCNo(int cNo);*/
     //获取信息
     Map<String, Object> getMessage(int empno);
 
@@ -25,4 +23,9 @@ public interface IEmpService extends IService<EmpJxd> {
 
     //获取老师
     EmpJxd getTeacher(int class_num);
+
+    List<Map<String,Object>> getStudentsToAddListForSelect();
+
+    //学生方法,把一名学生从班里删除，但不删除学生本人
+    boolean deleteStudentFromOneClass(int empno);
 }

@@ -62,4 +62,14 @@ public class EmpServiceImpl extends ServiceImpl<IEmpMapper, EmpJxd> implements I
     public EmpJxd getTeacher(int class_num) {
         return empMapper.getTeacher(class_num);
     }
+
+    @Override
+    public List<Map<String, Object>> getStudentsToAddListForSelect() {
+        return empMapper.getStudentsToAddListForSelect();
+    }
+
+    @Override
+    public boolean deleteStudentFromOneClass(int empno) {
+        return empMapper.deleteStudentFromOneClass(empno);
+    }
 }

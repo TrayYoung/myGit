@@ -17,4 +17,5 @@
     <insert id="addClass">
         insert into class (cname,empno) values (#{cname},#{empno})
     </insert>
+
 </mapper>

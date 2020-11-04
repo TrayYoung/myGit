@@ -26,5 +26,13 @@
     e.class_num = c.cNo where class_num = #{class_num}
     </select>
 
+    <select id="getStudentsToAddListForSelect" resultType="java.util.HashMap">
+        select empno,ename from emp_jxd where role='STUDENT' and class_num is null
+    </select>
+
+    <update id="deleteStudentFromOneClass">
+        update emp_jxd set class_num=null where empno=#{empno}
+    </update>
+
 
 </mapper>

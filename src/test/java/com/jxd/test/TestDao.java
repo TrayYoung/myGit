@@ -4,6 +4,7 @@ import com.jxd.comment.cmtApplication;
 import com.jxd.comment.mapper.IClassJxdMapper;
 import com.jxd.comment.mapper.ISumCommentMapper;
 import com.jxd.comment.model.ClassJxd;
+import com.jxd.comment.service.IDeptService;
 import com.jxd.comment.service.ISelectSumCmtService;
 import com.jxd.comment.service.ISumCommentService;
 import org.junit.Test;
@@ -42,12 +43,12 @@ public class TestDao {
     }*/
 
     @Autowired
-    private ISelectSumCmtService selectSumCmtService;
+    private IDeptService deptService;
 
     @Test
     public void test() {
-        Map<String, Object> map = selectSumCmtService.getSumCommentCompany(10003, "regular");
-        System.out.println("数据条数是：" + map.size());
+        List<Map<String,Object>> list = deptService.selectAllDept();
+        System.out.println("数据条数是：" + list.size());
     }
 
 

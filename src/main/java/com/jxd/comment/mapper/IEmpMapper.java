@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.Map;
 
 public interface IEmpMapper extends BaseMapper<EmpJxd> {
-    //经理方法
+
 
     /**
-     * 查询个人信息
+     * 查询经理所在部门信息
      * @param empno
      * @return
      */
-    List<Map<String,Object>> selectByEmpno(int empno);
+    int selectManagerDeptno(int empno);
 
     /**
      * 查找部门全部员工

@@ -29,19 +29,21 @@ public class EmpController {
     private IEmpService empService;
 
     /**
-     * 显示经理个人信息
+     * 显示经理所在部门
+     *
      * @param empno
      * @return
      */
-    @RequestMapping("/showInfo/{empno}")
+    @RequestMapping("/showDept/{empno}")
     @ResponseBody
-    public List<Map<String, Object>> showInfo(@PathVariable("empno") int empno) {
-        List<Map<String, Object>> list = empService.selectOwn(empno);
-        return list;
+    public String showInfo(@PathVariable("empno") int empno) {
+        String deptno = empService.selectOwnDeptno(empno) + "";
+        return deptno;
     }
 
     /**
      * 根据姓名筛选部门员工
+     *
      * @param deptno
      * @param ename
      * @return
@@ -56,6 +58,7 @@ public class EmpController {
 
     /**
      * 查找部门全部员工
+     *
      * @param deptno
      * @return
      */
@@ -63,41 +66,43 @@ public class EmpController {
     @ResponseBody
     public List<Map<String, Object>> getEmpByDeptno(@PathVariable("deptno") int deptno) {
         List<Map<String, Object>> list = empService.selectByDeptno(deptno);
-//        System.out.println("数据条数是" + list.size());
         return list;
     }
 
     /**
      * 查询一个学生的所有信息
+     *
      * @param empno 学生工号
      * @return
      */
     @RequestMapping(value = "/getMessage/{empno}")
     @ResponseBody
-    public Map<String,Object> getStudent(@PathVariable("empno") int empno){
-        Map<String,Object> message = empService.getMessage(empno);
+    public Map<String, Object> getStudent(@PathVariable("empno") int empno) {
+        Map<String, Object> message = empService.getMessage(empno);
         return message;
     }
 
     /**
      * 根据班期查询班级成员
+     *
      * @param class_num
      * @return
      */
     @RequestMapping(value = "/getStudentByCno/{class_num}")
     @ResponseBody
-    public List<Map<String,Object>> getStudentByCno(@PathVariable("class_num") int class_num){
+    public List<Map<String, Object>> getStudentByCno(@PathVariable("class_num") int class_num) {
         return empService.getStudentByCno(class_num);
     }
 
     /**
      * 根据班级获取该班的教师
+     *
      * @param class_num
      * @return
      */
     @RequestMapping(value = "/getTeacherMessage/{class_num}")
     @ResponseBody
-    public EmpJxd getTeacher(@PathVariable("class_num") int class_num){
+    public EmpJxd getTeacher(@PathVariable("class_num") int class_num) {
         return empService.getTeacher(class_num);
     }
 

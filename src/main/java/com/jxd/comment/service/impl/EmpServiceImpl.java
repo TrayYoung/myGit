@@ -7,6 +7,7 @@ import com.jxd.comment.service.IEmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -21,12 +22,12 @@ import java.util.Map;
 @Service
 public class EmpServiceImpl extends ServiceImpl<IEmpMapper, EmpJxd> implements IEmpService {
 
-    @Autowired
+    @Resource
     private IEmpMapper empMapper;
 
     @Override
-    public List<Map<String,Object>> selectOwn(int empno) {
-        return empMapper.selectByEmpno(empno);
+    public int selectOwnDeptno(int empno) {
+        return empMapper.selectManagerDeptno(empno);
     }
 
     @Override
@@ -35,8 +36,8 @@ public class EmpServiceImpl extends ServiceImpl<IEmpMapper, EmpJxd> implements I
     }
 
     @Override
-    public List<Map<String, Object>> selectByDeptnoAndName(int deptno,String ename) {
-        return empMapper.selectEmpByDeptnoAndEname(deptno,ename);
+    public List<Map<String, Object>> selectByDeptnoAndName(int deptno, String ename) {
+        return empMapper.selectEmpByDeptnoAndEname(deptno, ename);
     }
 
     @Override

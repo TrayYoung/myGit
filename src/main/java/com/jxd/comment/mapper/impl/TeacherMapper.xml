@@ -18,4 +18,5 @@
         select courseid,coursename from course_jxd
     </select>
 
+
 </mapper>

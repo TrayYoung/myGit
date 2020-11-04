@@ -73,4 +73,32 @@ public class EmpServiceImpl extends ServiceImpl<IEmpMapper, EmpJxd> implements I
     public boolean deleteStudentFromOneClass(int empno) {
         return empMapper.deleteStudentFromOneClass(empno);
     }
+
+    //得到学生总表
+    @Override
+    public List<Map<String, Object>> selectStudentList() {
+        return empMapper.selectStudentList();
+    }
+
+    //得到教师总表
+    @Override
+    public List<Map<String, Object>> selectTeacherList() {
+        return empMapper.selectTeacherList();
+    }
+
+    //得到其他员工总表
+    @Override
+    public List<Map<String, Object>> selectEmpJxdList() {
+        return empMapper.selectEmpJxdList();
+    }
+
+    @Override
+    public List<Map<String, Object>> getOnesScoreByEmpno(int empno) {
+        return empMapper.getOnesScoreByEmpno(empno);
+    }
+
+    @Override
+    public List<Map<String, Object>> getOnesSumCommentByEmpno(int empno) {
+        return empMapper.getOnesSumCommentByEmpno(empno);
+    }
 }

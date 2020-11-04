@@ -2,6 +2,7 @@ package com.jxd.comment.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jxd.comment.model.EmpJxd;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -28,4 +29,15 @@ public interface IEmpService extends IService<EmpJxd> {
 
     //学生方法,把一名学生从班里删除，但不删除学生本人
     boolean deleteStudentFromOneClass(int empno);
+
+    //得到学生总表
+    List<Map<String,Object>> selectStudentList();
+    //得到教师总表
+    List<Map<String,Object>> selectTeacherList();
+    //得到其他员工总表
+    List<Map<String,Object>> selectEmpJxdList();
+
+    //画总表用
+    List<Map<String,Object>> getOnesScoreByEmpno(int empno);
+    List<Map<String,Object>> getOnesSumCommentByEmpno(int empno);
 }

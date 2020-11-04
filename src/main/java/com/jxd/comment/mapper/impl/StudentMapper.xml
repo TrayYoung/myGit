@@ -33,5 +33,20 @@
         update emp_jxd set class_num=null where empno=#{empno}
     </update>
 
+    <select id="selectStudentList" resultType="java.util.HashMap">
+        select * from emp_jxd where role="STUDENT"
+    </select>
+
+    <select id="getOnesScoreByEmpno" resultType="java.util.HashMap">
+        select cj.courseId,cj.courseName,scj.score from select_course_jxd scj
+        left join course_jxd cj on cj.courseId=scj.courseId
+        where scj.empno_stu=#{empno}
+    </select>
+
+    <select id="getOnesSumCommentByEmpno" resultType="java.util.HashMap">
+        select content_type,content_score from select_sum_cmt ssc
+        left join sum_comment sc on ssc.Sum_commentId=sc.Sum_commentId
+        WHERE ssc.empno_emp=#{empno}
+    </select>
 
 </mapper>

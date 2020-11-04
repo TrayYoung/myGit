@@ -40,7 +40,8 @@ public class ClassController {
     @RequestMapping("/getClassListForSelect")
     @ResponseBody
     public List<ClassJxd> getClassList(){
-        return classService.list();
+        List list=classService.list();
+        return list;
     }
 
 
@@ -105,4 +106,5 @@ public class ClassController {
             return "更新失败";
         }
     }
+
 }

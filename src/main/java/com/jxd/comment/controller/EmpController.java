@@ -120,4 +120,23 @@ public class EmpController {
             return "error";
         }
     }
+
+    //得到其他员工总表
+    @RequestMapping("/getEmpJxdTableData")
+    @ResponseBody
+    public List<Map<String,Object>> getEmpJxdTableData(){
+        List<Map<String,Object>> list=empService.selectEmpJxdList();
+        for (Map<String,Object> map : list){
+            int empno=(int)map.get("empno");
+            List<Map<String,Object>> scoreList=empService.getOnesScoreByEmpno(empno);
+            for (Map<String,Object> scoreMap : scoreList){
+                map.put(scoreMap.get("courseName").toString(),scoreMap.get("score"));
+            }
+            List<Map<String,Object>> sumCmtList=empService.getOnesSumCommentByEmpno(empno);
+            for (Map<String,Object> sumCmtMap : sumCmtList){
+                map.put(sumCmtMap.get("content_type").toString(),sumCmtMap.get("content_score"));
+            }
+        }
+        return list;
+    }
 }

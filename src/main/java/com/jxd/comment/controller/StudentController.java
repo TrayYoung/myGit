@@ -2,6 +2,7 @@ package com.jxd.comment.controller;
 
 import com.jxd.comment.model.ClassJxd;
 import com.jxd.comment.model.EmpJxd;
+import com.jxd.comment.model.SelectCourseJxd;
 import com.jxd.comment.service.IEmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -90,5 +91,25 @@ public class StudentController {
         }else {
             return "更新失败";
         }
+    }
+
+
+    //得到学生总表
+    @RequestMapping("/getStudentTableData")
+    @ResponseBody
+    public List<Map<String,Object>> getStudentTableData(){
+        List<Map<String,Object>> list=empService.selectStudentList();
+        for (Map<String,Object> map : list){
+            int empno=(int)map.get("empno");
+            List<Map<String,Object>> scoreList=empService.getOnesScoreByEmpno(empno);
+            for (Map<String,Object> scoreMap : scoreList){
+                map.put(scoreMap.get("courseName").toString(),scoreMap.get("score"));
+            }
+            List<Map<String,Object>> sumCmtList=empService.getOnesSumCommentByEmpno(empno);
+            for (Map<String,Object> sumCmtMap : sumCmtList){
+                map.put(sumCmtMap.get("content_type").toString(),sumCmtMap.get("content_score"));
+            }
+        }
+        return list;
     }
 }

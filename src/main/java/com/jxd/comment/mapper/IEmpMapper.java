@@ -60,4 +60,10 @@ public interface IEmpMapper extends BaseMapper<EmpJxd> {
     List<Map<String,Object>> getStudentsToAddListForSelect();
 
     boolean deleteStudentFromOneClass(@Param("empno") int empno);
+
+    List<Map<String,Object>> selectStudentList();
+    List<Map<String,Object>> selectTeacherList();
+    List<Map<String,Object>> selectEmpJxdList();
+    List<Map<String,Object>> getOnesScoreByEmpno(@Param("empno")int empno);
+    List<Map<String,Object>> getOnesSumCommentByEmpno(@Param("empno")int empno);
 }

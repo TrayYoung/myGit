@@ -1,5 +1,6 @@
 package com.jxd.comment.controller;
 
+import com.jxd.comment.model.CourseJxd;
 import com.jxd.comment.service.ICourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,13 @@ public class CourselController {
     @ResponseBody
     public List<Map<String,Object>> getCourseScoreByEmpno(@PathVariable("empno") int empno){
         List<Map<String,Object>> list=courseService.getCourseScoreByEmpno(empno);
+        return list;
+    }
+
+    @RequestMapping("/getCourseList")
+    @ResponseBody
+    public List<CourseJxd> getClassList(){
+        List<CourseJxd> list=courseService.list();
         return list;
     }
 }

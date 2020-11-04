@@ -5,9 +5,8 @@
 <mapper namespace="com.jxd.comment.mapper.IEmpMapper">
 
 
-    <select id="selectByEmpno" resultType="java.util.HashMap">
-        select empno,ename,sex,nation,birthday,address,ismarry,tel,idnum,school,major,remarks,img,role,dname
-        from emp_jxd e left join dept_jxd d on e.deptno = d.deptno where empno = #{empno}
+    <select id="selectManagerDeptno">
+        select deptno from emp_jxd where empno = #{empno}
     </select>
 
     <select id="selectEmpByDeptno" resultType="java.util.HashMap">

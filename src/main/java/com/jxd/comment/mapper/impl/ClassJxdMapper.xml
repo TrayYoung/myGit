@@ -11,4 +11,10 @@
         ORDER BY cNo
         limit #{pageStart}, #{pageSize}
     </select>
+    <update id="changeTeacherInOneClass">
+        update class set empno=#{empno} where cNo=#{class_num}
+    </update>
+    <insert id="addClass">
+        insert into class (cname,empno) values (#{cname},#{empno})
+    </insert>
 </mapper>

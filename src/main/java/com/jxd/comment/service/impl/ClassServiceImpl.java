@@ -35,4 +35,14 @@ public class ClassServiceImpl extends ServiceImpl<IClassJxdMapper, ClassJxd> imp
     public List<Map<String, Object>> getClassListByName(int pageStart,int pageSize,String cname) {
         return classJxdMapper.getClassListByName(pageStart,pageSize,cname);
     }
+
+    @Override
+    public boolean changeTeacherInOneClass(int class_num, int empno) {
+        return classJxdMapper.changeTeacherInOneClass(class_num,empno);
+    }
+
+    @Override
+    public boolean addClass(String cname, int empno) {
+        return classJxdMapper.addClass(cname,empno);
+    }
 }

@@ -14,9 +14,9 @@ public interface IEmpService extends IService<EmpJxd> {
 
     List<Map<String, Object>> selectByDeptnoAndName(int deptno, String ename);
 
-
+/*
     //学生方法
-    List<Map<String,Object>> getClassMemberByCNo(int cNo);
+    List<Map<String,Object>> getClassMemberByCNo(int cNo);*/
     //获取信息
     Map<String, Object> getMessage(int empno);
 

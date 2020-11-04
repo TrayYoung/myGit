@@ -23,10 +23,10 @@ public class StudentController {
     @Autowired
     private IEmpService empService;
 
-    @RequestMapping("/getClassMemberByCNo/{cNo}")
+    /*@RequestMapping("/getClassMemberByCNo/{cNo}")
     @ResponseBody
     public List<Map<String,Object>> getClassMemberByCNo(@PathVariable("cNo")int cNo){
         return empService.getClassMemberByCNo(cNo);
-    }
+    }*/
 
 }

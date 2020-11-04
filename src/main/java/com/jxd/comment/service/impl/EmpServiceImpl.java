@@ -49,14 +49,14 @@ public class EmpServiceImpl extends ServiceImpl<IEmpMapper, EmpJxd> implements I
         return empMapper.selectStudentByCno(class_num);
     }
 
-
+/*
     //以下是学生方法!
     //学生方法!
     //学生方法!
     @Override
     public List<Map<String, Object>> getClassMemberByCNo(int cNo) {
         return empMapper.getClassMemberByCNo(cNo);
-    }
+    }*/
 
     @Override
     public EmpJxd getTeacher(int class_num) {

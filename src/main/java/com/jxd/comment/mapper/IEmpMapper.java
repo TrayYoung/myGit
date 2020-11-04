@@ -53,6 +53,6 @@ public interface IEmpMapper extends BaseMapper<EmpJxd> {
      */
     EmpJxd getTeacher(int class_num);
 
-    //根据班级号查询这个班的学生
-    List<Map<String,Object>> getClassMemberByCNo(@Param("cNo")int cNo);
+   /* //根据班级号查询这个班的学生
+    List<Map<String,Object>> getClassMemberByCNo(@Param("cNo")int cNo);*/
 }

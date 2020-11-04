@@ -17,7 +17,7 @@
 
     <select id="getTeacher" resultType="com.jxd.comment.model.EmpJxd">
         select e.* from emp_jxd e left join class c on
-        c.empno = e.empno where class_num = #{class_num}
+        c.empno = e.empno where cno = #{class_num}
     </select>
 
     <select id="selectStudentByCno" resultType="java.util.HashMap">

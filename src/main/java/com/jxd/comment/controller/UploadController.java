@@ -1,6 +1,10 @@
 package com.jxd.comment.controller;
 
+import com.jxd.comment.service.IEmpService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ClassUtils;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,12 +21,19 @@ import java.util.UUID;
  */
 @Controller
 public class UploadController {
+
+    @Autowired
+    private IEmpService empService;
+
     //上传照片
     @RequestMapping(value = "/uploadFile",produces = "text/html;charset=utf-8")
     @ResponseBody
     public String imageUpload(@RequestParam("file") MultipartFile file) throws IOException{
+
         //确定文件上传位置
-        String path = "E:\\JAVAAA\\images";
+        String path = ClassUtils.getDefaultClassLoader().getResource("").getPath()+"static/";
+
+        System.out.println(path);
         //判断文件夹是否存在，不存在则创建新的
         File file_save = new File(path);
         if (!file_save.exists()){
@@ -33,8 +44,8 @@ public class UploadController {
         String fname_old = file.getOriginalFilename();//获取源文件名
         //获取UUID,包含数字字母，全局唯一的32位字符串
         String uuid = java.util.UUID.randomUUID().toString();
-        System.out.println(uuid);
         String fname_new = uuid + "_" + fname_old;
+        System.out.println(uuid);
 
         //保存文件到服务器
         File file_final = new File(path,fname_new);

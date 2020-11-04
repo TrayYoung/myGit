@@ -1,11 +1,13 @@
 package com.jxd.comment.controller;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.jxd.comment.model.EmpJxd;
 import com.jxd.comment.service.IEmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -97,5 +99,20 @@ public class EmpController {
     @ResponseBody
     public EmpJxd getTeacher(@PathVariable("class_num") int class_num){
         return empService.getTeacher(class_num);
+    }
+
+    /**
+     * 修改个人信息
+     * @Param empMessage 员工个人信息
+     */
+    @RequestMapping("/editEmpMessage")
+    @ResponseBody
+    public String updateMessage(@RequestBody EmpJxd empJxd){
+        boolean flag = empService.updateById(empJxd);
+        if (flag){
+            return "success";
+        }else {
+            return "error";
+        }
     }
 }

@@ -46,6 +46,11 @@ public interface IEmpMapper extends BaseMapper<EmpJxd> {
      */
     List<Map<String,Object>> selectStudentByCno(@Param("class_num") int class_num);
 
+    List<Map<String,Object>> getStudentByName(@Param("pageStart") int pageStart,
+                                              @Param("pageSize")int pageSize,
+                                              @Param("ename")String ename,
+                                              @Param("class_num") int class_num);
+
     /**
      * 获取一个班级的老师
      * @param class_num

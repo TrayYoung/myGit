@@ -139,4 +139,17 @@ public class EmpController {
         }
         return list;
     }
+
+    @RequestMapping("/getStudentByName/{currentPage}/{pagesize}/{ename}/{class_num}")
+    @ResponseBody
+    public List<Map<String,Object>> getStudentByName(@PathVariable("currentPage")int currentPage,
+                                   @PathVariable("pagesize")int pagesize,
+                                   @PathVariable("ename")String ename,
+                                   @PathVariable("class_num") int class_num){
+        int pageStart= pagesize * (currentPage-1);
+        int pageSize = pagesize;
+        List<Map<String,Object>> list = empService.getStudentByName(pageStart,
+                pageSize,ename,class_num);
+        return list;
+    }
 }

@@ -25,6 +25,10 @@ public interface IEmpService extends IService<EmpJxd> {
     //获取老师
     EmpJxd getTeacher(int class_num);
 
+    //根据班期获取模糊查询的学生
+    List<Map<String,Object>> getStudentByName( int pageStart,int pageSize,
+                                               String ename,int class_num);
+
     List<Map<String,Object>> getStudentsToAddListForSelect();
 
     //学生方法,把一名学生从班里删除，但不删除学生本人

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jxd.comment.mapper.IEmpMapper;
 import com.jxd.comment.model.EmpJxd;
 import com.jxd.comment.service.IEmpService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -68,6 +69,12 @@ public class EmpServiceImpl extends ServiceImpl<IEmpMapper, EmpJxd> implements I
     public List<Map<String, Object>> getStudentsToAddListForSelect() {
         return empMapper.getStudentsToAddListForSelect();
     }
+
+    @Override
+    public List<Map<String,Object>> getStudentByName(int pageStart,int pageSize,
+                                                     String ename,int class_num){
+        return empMapper.getStudentByName(pageStart,pageSize,ename,class_num);
+    };
 
     @Override
     public boolean deleteStudentFromOneClass(int empno) {

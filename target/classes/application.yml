@@ -9,10 +9,14 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/mysql?characterEncoding=utf-8
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: root
+    password: 123123
   mvc:
     view:
       prefix: /WEB-INF/view
+    static-path-pattern: /**
+# 修改默认的静态寻址资源目录
+  resources:
+    static-locations: classpath:/templates/,classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
 
 
 #注册映射文件

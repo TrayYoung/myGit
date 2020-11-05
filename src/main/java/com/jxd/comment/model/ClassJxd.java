@@ -16,6 +16,7 @@ public class ClassJxd {
 
     @TableId("cNo")
     private int cNo;        //班级编号
+
     private String cname;   //班级名称
     private int empno;      //老师员工号
 

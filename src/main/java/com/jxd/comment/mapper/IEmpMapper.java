@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.Map;
 
 public interface IEmpMapper extends BaseMapper<EmpJxd> {
-    //经理方法
+
 
     /**
-     * 查询个人信息
+     * 查询经理所在部门信息
      * @param empno
      * @return
      */
-    List<Map<String,Object>> selectByEmpno(int empno);
+    int selectManagerDeptno(int empno);
 
     /**
      * 查找部门全部员工
@@ -46,6 +46,11 @@ public interface IEmpMapper extends BaseMapper<EmpJxd> {
      */
     List<Map<String,Object>> selectStudentByCno(@Param("class_num") int class_num);
 
+    List<Map<String,Object>> getStudentByName(@Param("pageStart") int pageStart,
+                                              @Param("pageSize")int pageSize,
+                                              @Param("ename")String ename,
+                                              @Param("class_num") int class_num);
+
     /**
      * 获取一个班级的老师
      * @param class_num
@@ -53,6 +58,17 @@ public interface IEmpMapper extends BaseMapper<EmpJxd> {
      */
     EmpJxd getTeacher(int class_num);
 
-    //根据班级号查询这个班的学生
-    List<Map<String,Object>> getClassMemberByCNo(@Param("cNo")int cNo);
+   /* //根据班级号查询这个班的学生
+    List<Map<String,Object>> getClassMemberByCNo(@Param("cNo")int cNo);*/
+
+   //查询待添加的学生
+    List<Map<String,Object>> getStudentsToAddListForSelect();
+
+    boolean deleteStudentFromOneClass(@Param("empno") int empno);
+
+    List<Map<String,Object>> selectStudentList();
+    List<Map<String,Object>> selectTeacherList();
+    List<Map<String,Object>> selectEmpJxdList();
+    List<Map<String,Object>> getOnesScoreByEmpno(@Param("empno")int empno);
+    List<Map<String,Object>> getOnesSumCommentByEmpno(@Param("empno")int empno);
 }

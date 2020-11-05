@@ -31,4 +31,5 @@ FROM (
         select empno,ename,sex,birthday,address from emp_jxd where empno = #{empno}
     </select>
 
+
 </mapper>

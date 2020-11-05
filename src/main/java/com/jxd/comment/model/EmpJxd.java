@@ -1,5 +1,9 @@
 package com.jxd.comment.model;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 /**
  * @ClassName emp
  * @Description TODO
@@ -8,23 +12,32 @@ package com.jxd.comment.model;
  * @Version 1.0
  */
 
+@TableName("emp_jxd")
 public class EmpJxd {
+
+    @TableId("empno")
     private int empno;      //员工号
     private String ename;   //姓名
     private String sex;     //性别
     private String nation;  //民族
     private String birthday;//生日
     private String address; //籍贯
+
+    @TableField("isMarry")
     private String isMarry; //婚否
     private String tel;     //电话
+
+    @TableField("idNum")
     private String idNum;   //身份证号
     private String school;  //学校
     private String major;   //专业
     private String remarks; //备注
     private String img;     //头像路径
-    private String job;    //权限
+    private String role;    //权限
     private int deptno;     //部门编号
-    private int classNo;    //班级号
+
+    @TableField("class_num")
+    private int class_num;    //班级号
 
     public EmpJxd() {
     }
@@ -133,12 +146,12 @@ public class EmpJxd {
         this.img = img;
     }
 
-    public String getJob() {
-        return job;
+    public String getRole() {
+        return role;
     }
 
-    public void setJob(String job) {
-        this.job = job;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public int getDeptno() {
@@ -149,12 +162,12 @@ public class EmpJxd {
         this.deptno = deptno;
     }
 
-    public int getClassNo() {
-        return classNo;
+    public int getClass_num() {
+        return class_num;
     }
 
-    public void setClassNo(int classNo) {
-        this.classNo = classNo;
+    public void setClass_num(int class_num) {
+        this.class_num = class_num;
     }
 
 }

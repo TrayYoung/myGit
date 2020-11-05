@@ -3,5 +3,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.jxd.comment.mapper.IEmpMapper">
-
+    <select id="selectEmpJxdList" resultType="java.util.HashMap">
+        select * from emp_jxd where role not in ("STUDENT","TEACHER")
+    </select>
+    <select id="selectTeacherList" resultType="java.util.HashMap">
+        select * from emp_jxd where role="Teacher"
+    </select>
 </mapper>

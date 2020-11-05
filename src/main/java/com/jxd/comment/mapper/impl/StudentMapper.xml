@@ -10,10 +10,10 @@
         e.class_num = c.cno where e.empno = #{empno}
     </select>
     <!---->
-    <select id="getClassMemberByCNo" resultType="java.util.HashMap">
+   <!-- <select id="getClassMemberByCNo" resultType="java.util.HashMap">
        select e.empno,e.ename,c.cname from emp_jxd e left join class c on e.class_num=c.cNo
        where e.class_num=#{cNo}
-    </select>
+    </select>-->
 
     <select id="getTeacher" resultType="com.jxd.comment.model.EmpJxd">
         select e.* from emp_jxd e left join class c on
@@ -21,7 +21,44 @@
     </select>
 
     <select id="selectStudentByCno" resultType="java.util.HashMap">
-        select e.*,cname from emp_jxd e left join class c on
-         e.class_num = c.cNo where class_num = #{class_num}
+    select e.*,cname from emp_jxd e left join class c on
+    e.class_num = c.cNo where class_num = #{class_num}
+    </select>
+
+    <select id="getStudentsToAddListForSelect" resultType="java.util.HashMap">
+        select empno,ename from emp_jxd where role='STUDENT' and class_num is null
+    </select>
+
+    <update id="deleteStudentFromOneClass">
+        update emp_jxd set class_num=null where empno=#{empno}
+    </update>
+
+    <select id="selectStudentList" resultType="java.util.HashMap">
+        select * from emp_jxd where role="STUDENT"
+    </select>
+
+    <select id="getOnesScoreByEmpno" resultType="java.util.HashMap">
+        select cj.courseId,cj.courseName,scj.score from select_course_jxd scj
+        left join course_jxd cj on cj.courseId=scj.courseId
+        where scj.empno_stu=#{empno}
+    </select>
+
+    <select id="getOnesSumCommentByEmpno" resultType="java.util.HashMap">
+        select content_type,content_score from select_sum_cmt ssc
+        left join sum_comment sc on ssc.Sum_commentId=sc.Sum_commentId
+        WHERE ssc.empno_emp=#{empno}
+    </select>
+    <select id="getStudentByName" resultType="java.util.HashMap">
+        select cname,ej.* from emp_jxd ej LEFT JOIN class c on ej.class_num = c.cno
+        <where>
+            <if test="ename != 'isNull'">
+                ename like concat('%',#{ename},'%')
+            </if>
+            <if test="class_num != null and class_num != ''">
+                and class_num = #{class_num}
+            </if>
+        </where>
+        ORDER BY ej.empno
+        limit #{pageStart}, #{pageSize}
     </select>
 </mapper>

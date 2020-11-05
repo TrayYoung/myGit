@@ -108,4 +108,9 @@ public class EmpServiceImpl extends ServiceImpl<IEmpMapper, EmpJxd> implements I
     public List<Map<String, Object>> getOnesSumCommentByEmpno(int empno) {
         return empMapper.getOnesSumCommentByEmpno(empno);
     }
+
+    @Override
+    public List<Map<String, Object>> selectStudentListByClassNumAndEname(Map<String, Object> formMap) {
+        return empMapper.selectStudentListByClassNumAndEname(formMap);
+    }
 }

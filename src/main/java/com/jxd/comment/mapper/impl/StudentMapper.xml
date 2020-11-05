@@ -48,6 +48,7 @@
         left join sum_comment sc on ssc.Sum_commentId=sc.Sum_commentId
         WHERE ssc.empno_emp=#{empno}
     </select>
+
     <select id="getStudentByName" resultType="java.util.HashMap">
         select cname,ej.* from emp_jxd ej LEFT JOIN class c on ej.class_num = c.cno
         <where>
@@ -61,4 +62,21 @@
         ORDER BY ej.empno
         limit #{pageStart}, #{pageSize}
     </select>
+
+    <select id="selectStudentListByClassNumAndEname" resultType="java.util.HashMap">
+        select * from emp_jxd where role="STUDENT"
+        <if test="formMap.querySname != null and formMap.class_num!=-1">
+            and ename like concat("%",#{formMap.querySname},"%")
+            and class_num=#{formMap.class_num}
+        </if>
+        <if test="formMap.querySname != null and formMap.class_num==-1">
+            and ename like concat("%",#{formMap.querySname},"%")
+        </if>
+        <if test="formMap.querySname == null and formMap.class_num!=-1">
+            and class_num=#{formMap.class_num}
+        </if>
+        limit #{formMap.pageStart},#{formMap.pageSize}
+    </select>
+
+
 </mapper>

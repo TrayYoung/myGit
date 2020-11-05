@@ -36,6 +36,7 @@ public interface IEmpService extends IService<EmpJxd> {
 
     //得到学生总表
     List<Map<String,Object>> selectStudentList();
+    List<Map<String,Object>> selectStudentListByClassNumAndEname(Map<String,Object> formMap);
     //得到教师总表
     List<Map<String,Object>> selectTeacherList();
     //得到其他员工总表

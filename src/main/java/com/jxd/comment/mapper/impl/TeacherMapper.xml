@@ -4,32 +4,93 @@
 
 <mapper namespace="com.jxd.comment.mapper.IClassJxdMapper">
 
-<!--sbgymyjj-->
+<!--找学生-->
     <select id="getClassByTeacher" resultType="java.util.HashMap">
-        select cno,cname,e.ename
-        from class c left join emp_jxd e on c.empno = e.empno where c.empno = #{empno}
+SELECT
+	empno,
+	ename,
+	cname,
+	dname
+FROM
+	( SELECT max( cno ) cno, cname FROM class WHERE empno = #{empno} ) s
+	LEFT JOIN emp_jxd e ON e.class = s.cno
+	LEFT JOIN dept_jxd d on e.deptno = d.deptno
     </select>
-    <select id="getStudentByClass" resultType="java.util.HashMap">
-            select empno,ename from emp_jxd where deptno=2 and class = #{cls}
+	<select id="selectStu" resultType="java.util.HashMap">
+SELECT
+	empno,
+	ename,
+	cname,
+	dname
+FROM
+	( SELECT max( cno ) cno, cname FROM class WHERE empno = #{empno} ) s
+	LEFT JOIN emp_jxd e ON e.class = s.cno
+	LEFT JOIN dept_jxd d on e.deptno = d.deptno
+	where empno like concat('%',#{empno_stu},'%')
+	and ename like concat('%',#{ename},'%')
     </select>
-    <select id="getCourseByTeacher" resultType="java.util.HashMap">
+	<!--根据学员编号查询-->
+	<select id="selectStuByEmpno" resultType="java.util.HashMap">
+SELECT
+	empno,
+	ename,
+	cname,
+	dname
+FROM
+	( SELECT max( cno ) cno, cname FROM class WHERE empno = #{empno} ) s
+	LEFT JOIN emp_jxd e ON e.class = s.cno
+	LEFT JOIN dept_jxd d on e.deptno = d.deptno
+	where empno like concat('%',#{empno_stu},'%')
+    </select>
+	<!--根据学员姓名查询-->
+	<select id="selectStuByEname" resultType="java.util.HashMap">
+SELECT
+	empno,
+	ename,
+	cname,
+	dname
+FROM
+	( SELECT max( cno ) cno, cname FROM class WHERE empno = #{empno} ) s
+	LEFT JOIN emp_jxd e ON e.class = s.cno
+	LEFT JOIN dept_jxd d on e.deptno = d.deptno
+	where ename like concat('%',#{ename},'%')
+    </select>
+
+
+    <select id="getCourse" resultType="java.util.HashMap">
         select courseid,coursename from course_jxd
     </select>
     <select id="getScore" resultType="java.util.HashMap">
-        SELECT ename,courseName,score
-FROM (
-	SELECT ename,courseid,score
-	FROM select_course_jxd s
-		LEFT JOIN emp_jxd e ON s.empno_stu = e.empno
+SELECT
+	score,
+	ename
+FROM
+	(
+	SELECT
+		empno,
+		ename
+	FROM
+		emp_jxd e
 	WHERE
-		empno_tch = #{empno}
-		AND courseId = #{courseid}
-	) a
-	LEFT JOIN course_jxd b ON a.courseId = b.courseId
+	class = ( SELECT max( cno ) FROM class WHERE empno = #{empno} )) a
+	LEFT JOIN select_course_jxd s ON a.empno = s.empno_stu
+WHERE
+	courseId = #{courseid}
     </select>
     <select id="getEmpInfo" resultType="java.util.HashMap">
-        select empno,ename,sex,birthday,address from emp_jxd where empno = #{empno}
+        SELECT empno,ename,sex,birthday,address,
+	isMarry,tel,idNum,school,major,remarks,dname
+FROM emp_jxd e
+LEFT JOIN dept_jxd d ON e.deptno = d.deptno
+WHERE
+	empno = #{empno}
     </select>
+    <update id="setScore" parameterType="java.util.Map">
+        update select_course_jxd set score = #{score}
+        where empno_stu = #{empno_stu}
+        and empno_tch = #{empno_tch}
+        and courseId = #{courseid}
+    </update>
 
 
 </mapper>

@@ -1,18 +1,13 @@
 package com.jxd.comment.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jxd.comment.model.ClassJxd;
 import com.jxd.comment.service.IClassService;
 import com.jxd.comment.service.impl.ClassServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -29,82 +24,83 @@ public class ClassController {
     @Autowired
     private ClassServiceImpl classService;
 
-    @RequestMapping("/showClass/{empno}")
+    /*获得老师下所有的班级*/
+    @RequestMapping("/showStu/{empno}")
     @ResponseBody
     public List<Map<String,Object>> showClass(@PathVariable("empno") String empno){
         List<Map<String,Object>> list = classService.getClass(Integer.parseInt(empno));
-
+        return list;
+    }
+    /*根据学号和姓名搜索学员*/
+    @RequestMapping("/selectStu/{empno}/{empno_stu}/{ename}")
+    @ResponseBody
+    public List<Map<String,Object>> selectStu(@PathVariable("empno")String empno,@PathVariable("empno_stu")String empno_stu,
+                                              @PathVariable("ename")String ename){
+        List<Map<String,Object>> list = classService.selectStu(Integer.parseInt(empno),Integer.parseInt(empno_stu),ename);
+        return list;
+    }
+    /*根据学员工号搜索*/
+    @RequestMapping("/selectStuByEmpno/{empno}/{empno_stu}")
+    @ResponseBody
+    public List<Map<String,Object>> selectStuByEmpno(@PathVariable("empno")String empno,@PathVariable("empno_stu")String empno_stu){
+        List<Map<String,Object>> list = classService.selectStuByEmpno(Integer.parseInt(empno),Integer.parseInt(empno_stu));
+        return list;
+    }
+    /*根据学员姓名搜索*/
+    @RequestMapping("/selectStuByEname/{empno}/{ename}")
+    @ResponseBody
+    public List<Map<String,Object>> selectStu(@PathVariable("empno")String empno,@PathVariable("ename")String ename){
+        List<Map<String,Object>> list = classService.selectStuByEname(Integer.parseInt(empno),ename);
         return list;
     }
 
-    @RequestMapping("/getClassListForSelect")
+
+
+    /*课程列表，所有老师的课程都一样，所以不用加老师的条件*/
+    @RequestMapping("/showCourse")
     @ResponseBody
-    public List<ClassJxd> getClassList(){
-        List list=classService.list();
+    public List<Map<String,Object>> showCourse(){
+        List<Map<String,Object>> list = classService.getCourse();
         return list;
     }
 
-
-    @RequestMapping("/getClassListByName/{currentPage}/{pagesize}/{cname}")
+    /**
+     * 通过empno和和课程编号获得成绩
+     * @param empno
+     * @param courseid
+     * @return
+     */
+    @RequestMapping("/showScore/{empno}/{courseid}")
     @ResponseBody
-    public List<Map<String,Object>> getClassListByName
-            (@PathVariable("currentPage")int currentPage,@PathVariable("pagesize")int pagesize,
-             @PathVariable("cname")String cname){
-        int pageStart=pagesize*(currentPage-1);
-        int pageSize=pagesize;
-        String cname1=cname;
-        List<Map<String,Object>> list=classService.getClassListByName(pageStart,pageSize,cname1);
+    public List<Map<String,Object>> showScore(@PathVariable("empno") String empno,@PathVariable("courseid") String courseid){
+        List<Map<String,Object>> list = classService.getScore(Integer.parseInt(empno),Integer.parseInt(courseid));
         return list;
     }
 
-    //修改班级的主管老师
-    @RequestMapping("/changeTeacherInOneClass/{class_num}/{empno}")
+    @RequestMapping("/showStuInfo/{empno}")
     @ResponseBody
-    public String changeTeacherInOneClass
-            (@PathVariable("class_num") int class_num,@PathVariable("empno") int empno){
-
-        boolean flag=classService.changeTeacherInOneClass(class_num,empno);
-        if (flag){
-            return "老师修改成功";
-        }else {
-            return "修改失败";
-        }
+    public List<Map<String,Object>> showStuInfo(@PathVariable("empno")String empno){
+        List<Map<String,Object>> list = classService.getEmpInfo(Integer.parseInt(empno));
+        return list;
     }
 
-    //修改班级的主管老师
-    @RequestMapping("/addClass/{cname}/{empno}")
-    @ResponseBody
-    public String addClass
-    (@PathVariable("cname") String cname,@PathVariable("empno") int empno){
+    /*打分*/
+    @RequestMapping("/setScore/{score}/{empno_stu}/{empno_tch}/{courseid}")
+    public String setScore(@PathVariable("empno")String score,@PathVariable("empno_stu")String empno_stu,
+                            @PathVariable("empno_tch")String empno_tch,@PathVariable("courseid")String courseid){
 
-
-        boolean flag=classService.addClass(cname,empno);
+        boolean flag = classService.setScore(Double.parseDouble(score),Integer.parseInt(empno_stu),
+                Integer.parseInt(empno_tch),Integer.parseInt(courseid));
+        /*判断打分是否成功*/
         if (flag){
-            return "班级新增成功";
-        }else {
-            return "新增失败";
+            return "success";
         }
+        else {
+            return "failed";
+        }
+
     }
 
-    //修改班级信息
-    @RequestMapping("/editClass")
-    @ResponseBody
-    public String editClass(@RequestBody Map<String,Object> map){
-        ClassJxd classJxd=new ClassJxd();
 
-        classJxd.setcNo((int)(map.get("class_num")));
-        classJxd.setEmpno((int)map.get("teacherId"));
-        classJxd.setCname(map.get("cname").toString());
-       /* QueryWrapper<ClassJxd> wrapper=new QueryWrapper<>();
-        wrapper.eq("cname",map.get("cname").toString())
-                .eq("empno",map.get("teacherId"));*/
-        boolean flag=classService.updateById(classJxd);
-
-        if (flag){
-            return "班级更新成功";
-        }else {
-            return "更新失败";
-        }
-    }
 
 }

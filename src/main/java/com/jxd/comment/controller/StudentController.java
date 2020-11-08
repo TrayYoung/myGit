@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -111,5 +112,38 @@ public class StudentController {
             }
         }
         return list;
+    }
+
+
+    @RequestMapping("/getStudentListByClassNumAndEname")
+    @ResponseBody
+    public List<Map<String,Object>> getStudentListByClassNumAndEname(@RequestBody Map<String,Object> map){
+        int pageSize=(int)map.get("pagesize");
+        int pageStart=((int)map.get("currentPage")-1)*pageSize;
+        String querySname=map.get("querySname").toString();
+        String cNo=map.get("classNumForSelect").toString();
+        int class_num=-1;
+
+        if ("".equals(querySname) &&"".equals(cNo)){
+            querySname=null;
+            class_num=-1;
+        }else if ("".equals(querySname)&&!"".equals(cNo)){
+            querySname=null;
+            class_num=Integer.parseInt(cNo);
+        }else if (!"".equals(querySname)&&"".equals(cNo)){
+            class_num=-1;
+        }else {
+            class_num=Integer.parseInt(cNo);
+        }
+
+        Map<String,Object> formMap=new HashMap<>();
+        formMap.put("pageSize",pageSize);
+        formMap.put("pageStart",pageStart);
+        formMap.put("querySname",querySname);
+        formMap.put("class_num",class_num);
+
+        List<Map<String,Object>> studentListByTwoProp=
+                empService.selectStudentListByClassNumAndEname(formMap);
+        return studentListByTwoProp;
     }
 }

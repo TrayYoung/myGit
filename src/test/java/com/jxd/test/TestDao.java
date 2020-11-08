@@ -28,11 +28,11 @@ import java.util.Map;
 @SpringBootTest(classes = cmtApplication.class)
 public class TestDao {
 
-   /* @Autowired
+    @Autowired
     private IClassJxdMapper classJxdMapper;
-     @Test
-   public void testTeacher(){
-        List<Map<String,Object>> list = classJxdMapper.getCourseByTeacher(1000);
+    @Test
+    public void testTeacher(){
+      List<Map<String,Object>> list = classJxdMapper.selectStuByEname(1000,"小");
         for (Map<String,Object> map:list
              ) {
             for (String s:map.keySet()
@@ -40,7 +40,13 @@ public class TestDao {
                 System.out.println(map.get(s));
             }
         }
+/*    boolean flag = classJxdMapper.setScore(86,1003,1000,1);
+    if (flag){
+        System.out.println("好耶");
+    }else {
+        System.out.println("****");
     }*/
+    }
 
     @Autowired
     private IDeptService deptService;

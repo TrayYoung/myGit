@@ -1,5 +1,6 @@
 package com.jxd.comment.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -15,7 +16,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 @TableName("course_jxd")
 public class CourseJxd {
 
-    @TableId("courseId")
+    @TableId(value = "courseId",type = IdType.AUTO)
     private int courseId;       //课程编号
 
     @TableField("courseName")

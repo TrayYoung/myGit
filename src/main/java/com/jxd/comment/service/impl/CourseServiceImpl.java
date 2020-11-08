@@ -29,4 +29,9 @@ public class CourseServiceImpl extends ServiceImpl<ICourseJxdMapper, CourseJxd> 
     public List<Map<String, Object>> getCourseScoreByEmpno(int empno) {
         return courseJxdMapper.getCourseScoreByEmpno(empno);
     }
+
+    @Override
+    public List<CourseJxd> getCourseByName(int pageStart, int pageSize, String courseName) {
+        return courseJxdMapper.getCourseByName(pageStart,pageSize,courseName);
+    }
 }

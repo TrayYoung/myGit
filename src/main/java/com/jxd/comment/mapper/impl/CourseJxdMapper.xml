@@ -8,4 +8,15 @@
         LEFT JOIN course_jxd cj on scj.courseId=cj.courseId
         WHERE scj.empno_stu=#{empno}
     </select>
+
+    <select id="getCourseByName" resultType="java.util.HashMap">
+        select * from course_jxd
+        <where>
+            <if test="courseName != 'isNull'">
+                coursename like concat('%',#{courseName},'%')
+            </if>
+        </where>
+        ORDER BY courseId
+        limit #{pageStart}, #{pageSize}
+    </select>
 </mapper>

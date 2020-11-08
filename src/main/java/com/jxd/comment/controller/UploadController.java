@@ -22,16 +22,13 @@ import java.util.UUID;
 @Controller
 public class UploadController {
 
-    @Autowired
-    private IEmpService empService;
-
     //上传照片
     @RequestMapping(value = "/uploadFile",produces = "text/html;charset=utf-8")
     @ResponseBody
     public String imageUpload(@RequestParam("file") MultipartFile file) throws IOException{
 
         //确定文件上传位置
-        String path = ClassUtils.getDefaultClassLoader().getResource("").getPath()+"static/";
+        String path = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/";
 
         System.out.println(path);
         //判断文件夹是否存在，不存在则创建新的
@@ -51,5 +48,21 @@ public class UploadController {
         File file_final = new File(path,fname_new);
         file.transferTo(file_final);
         return fname_new;
+    }
+
+    @RequestMapping("/delImg/{imgName}")
+    @ResponseBody
+    public String delImg(@PathVariable("imgName") String imgName){
+        String path = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/";
+        File file = new File(path,imgName);
+        if (!file.exists()){
+            //文件不存在
+            return "none";
+        }
+        if (file.delete()){
+            return "success";
+        }else {
+            return "fail";
+        }
     }
 }
